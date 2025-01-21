@@ -379,7 +379,7 @@ provide('handleChangeType', handleChangeType)
         <div class="network">
           <div class="monitor-item-title">{{ $t('network') }} (IN|OUT)</div>
           <div class="monitor-item-value">{{ `${formatBytes(item.State.NetInSpeed)}/s |
-            ${formatBytes(item.State.NetOutSpeed)}/s`}}</div>
+            ${formatBytes(item.State.NetOutSpeed)}/s` }}</div>
         </div>
         <div class="average">
           <div class="monitor-item-title">{{ $t('load') }} (1|5|15)</div>
@@ -436,12 +436,13 @@ provide('handleChangeType', handleChangeType)
                 </div>
                 <div class="detail-item">
                   <div class="name">{{ $t('swap') }}</div>
-                  <div class="value">{{ formatBytes(item.State.SwapUsed) }} / {{ formatBytes(item.Host.SwapTotal) }}</div>
+                  <div class="value">{{ formatBytes(item.State.SwapUsed) }} / {{ formatBytes(item.Host.SwapTotal) }}
+                  </div>
                 </div>
                 <div class="detail-item">
                   <div class="name">{{ $t('network') }}（IN|OUT）</div>
                   <div class="value">{{ `${formatBytes(item.State.NetInSpeed)}/s |
-                    ${formatBytes(item.State.NetOutSpeed)}/s`}}</div>
+                    ${formatBytes(item.State.NetOutSpeed)}/s` }}</div>
                 </div>
                 <div class="detail-item">
                   <div class="name">{{ $t('load') }}(1|5|15)</div>
@@ -523,8 +524,8 @@ provide('handleChangeType', handleChangeType)
         <div class="tips">{{ $t('remove-host-tip') }}</div>
       </div>
       <div class="akile-modal-action">
-        <a-button type="primary" status="danger" :long="true"
-          @click="handleDeleteHost">{{ $t('remove-host-btn') }}</a-button>
+        <a-button type="primary" status="danger" :long="true" @click="handleDeleteHost">{{ $t('remove-host-btn')
+          }}</a-button>
       </div>
     </a-modal>
     <a-modal v-model:visible="editVisible" :footer="false" :hide-title="true" width="360px">
@@ -670,15 +671,18 @@ a {
       }
     }
 
-    // &:hover {
-    //   background: #e7e7e750;
-    //   backdrop-filter: blur(10px);
+    &{
+      transition: transform .15s ease;
+    }
+    &:hover {
+      background: #f5f5f5;
+      transform: scale(1.02);
 
-    //   .delete-btn,
-    //   .edit-btn {
-    //     display: flex;
-    //   }
-    // }
+      .delete-btn,
+      .edit-btn {
+        display: flex;
+      }
+    }
 
     .edit-btn {
       right: 60px !important;
@@ -745,7 +749,7 @@ a {
     .name {
       display: inline-block;
       vertical-align: middle;
-      width: 25%; 
+      width: 25%;
 
       .title {
         margin-bottom: 5px;
