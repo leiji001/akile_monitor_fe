@@ -571,7 +571,7 @@ body::before {
   width: 100%;
   height: 100%;
   z-index: -1;
-  background: url(https://api.imlazy.ink/v1/img/) center/cover no-repeat;
+  background: url(https://bing.biturl.top/?format=image&index=0&mkt=zh-CN) center/cover no-repeat;
   filter: blur(0px);
 }
 
