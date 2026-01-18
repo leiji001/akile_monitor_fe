@@ -571,7 +571,7 @@ body::before {
   width: 100%;
   height: 100%;
   z-index: -1;
-  background: url(//status.nianlei.icu/api/background) center/cover no-repeat;
+  background: url(//cf-api.nianlei.icu/api/background) center/cover no-repeat;
   filter: blur(0px);
 }
 
