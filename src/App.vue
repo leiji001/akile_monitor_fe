@@ -169,24 +169,11 @@ const sendPing = () => {
   socket.send('ping')
 }
 
-const fetchBingBackground = async () => {
-  try {
-    const res = await fetch('https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1');
-    const data = await res.json();
-    const imageBase = data.images[0].urlbase;
-    const imageUrl = `https://www.bing.com${imageBase}_1920x1080.jpg`;
-    document.body.style.setProperty('--bg-image', `url(${imageUrl})`);
-  } catch (e) {
-    console.error('Failed to fetch Bing background', e);
-  }
-}
-
 onMounted(async () => {
   if (dark.value) {
     document.body.setAttribute('arco-theme', 'dark')
   }
 
-  fetchBingBackground()
   await initScoket()
   handleFetchHostInfo()
 })
@@ -584,7 +571,7 @@ body::before {
   width: 100%;
   height: 100%;
   z-index: -1;
-  background: var(--bg-image) center/cover no-repeat;
+  background: url(//cf-api.nianlei.icu/api/background) center/cover no-repeat;
   filter: blur(0px);
 }
 
