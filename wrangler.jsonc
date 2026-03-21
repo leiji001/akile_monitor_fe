@@ -1,0 +1,9 @@
+{
+  "name": "ak-status",
+  "compatibility_date": "2025-06-04",
+  "assets": { "directory": "./dist" },
+  "vars": {
+    "VITE_SOCKET_URL": "wss://status.api.nianlei.icu/ws",
+    "VITE_API_URL":"https://status.api.nianlei.icu"
+  }
+}
