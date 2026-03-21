@@ -1,0 +1,33 @@
+name: Auto Sync to Deploy Branch
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync-branches:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Git identity
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Merge main into target branch
+        run: |
+          TARGET_BRANCH="Cloudflare-Workers"
+          
+          git checkout $TARGET_BRANCH
+          
+          git merge origin/main --no-edit
+          
+          git push origin $TARGET_BRANCH
