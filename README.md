@@ -1,6 +1,6 @@
 # Akile Monitor Fe
 
-![预览](https://github.com/akile-network/akile_monitor_fe/blob/main/akile_monitor.jpg?raw=true)
+![预览](/akile_monitor.jpg)
 
 Akile Monitor 前端开源项目，各位可以自行去 [Github Actions](https://github.com/akile-network/akile_monitor_fe/actions) 下载最近的构建后的文件
 

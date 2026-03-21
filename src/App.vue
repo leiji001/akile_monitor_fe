@@ -14,8 +14,8 @@ import { useI18n } from "vue-i18n";
 
 const { t } = useI18n()
 
-const socketURL = ref('')
-const apiURL = ref('')
+const socketURL = import.meta.env.VITE_SOCKET_URL
+const apiURL = import.meta.env.VITE_API_URL
 
 const theme = window.localStorage.getItem('theme') || 'light'
 const dark = ref(theme !== 'light')
@@ -96,20 +96,8 @@ let socket = null
 
 let nowtime = (Math.floor(Date.now() / 1000))
 
-const fetchConfig = async () => {
-  try {
-    const res = await axios.get('/config.json')
-    socketURL.value = res.data.socket
-    apiURL.value = res.data.apiURL
-  } catch (e) {
-    Message.error(t('get-config-error'))
-  }
-}
-
 const initScoket = async () => {
-  await fetchConfig()
-
-  socket = new WebSocket(socketURL.value);  // 替换为实际的 WebSocket 服务器 URL
+  socket = new WebSocket(socketURL);
 
   socket.onmessage = function (event) {
     try {
@@ -214,7 +202,7 @@ const handleShowDelete = (name) => {
 
 const handleDeleteHost = async () => {
   try {
-    await axios.post(apiURL.value + '/delete', {
+    await axios.post(apiURL + '/delete', {
       "auth_secret": authSecret.value,
       "name": deleteHostName.value
     })
@@ -237,7 +225,7 @@ const hostInfo = ref({})
 
 const handleFetchHostInfo = async () => {
   try {
-    const res = await axios.get(apiURL.value + '/info')
+    const res = await axios.get(apiURL + '/info')
     res.data.forEach((item) => {
       hostInfo.value[item.name] = item
     })
@@ -282,7 +270,7 @@ const handleShowEdit = (name) => {
 
 const handleEditHost = async () => {
   try {
-    await axios.post(apiURL.value + '/info', {
+    await axios.post(apiURL + '/info', {
       "name": editHostName.value,
       "due_time": new Date(duetime.value).getTime(),
       "buy_url": buy_url.value,
